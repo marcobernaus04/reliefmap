@@ -133,7 +133,7 @@ export function Dashboard() {
       </section>
 
       {/* Live map */}
-      <div className="flex-1 flex flex-col min-w-0 p-4 gap-2">
+      <div className="flex-1 flex flex-col min-w-[320px] p-4 gap-2">
         <div className="flex items-center justify-between">
           <div>
             <h2 className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">

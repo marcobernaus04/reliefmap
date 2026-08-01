@@ -20,23 +20,25 @@ export default function Home() {
         </div>
       </header>
 
-      {/* Three-column layout */}
-      <div className="flex flex-1 overflow-hidden">
-        {/* Left — intake form */}
-        <aside className="w-[420px] shrink-0 border-r border-border overflow-y-auto px-6 py-6 flex flex-col gap-0">
-          <div className="mb-5">
-            <h2 className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
-              Manual intake
-            </h2>
-            <p className="text-xs text-muted-foreground mt-1 leading-relaxed">
-              Simulate a Kapso payload — fill in the fields Agent 1 would collect and submit to classify.
-            </p>
-          </div>
-          <TriageForm />
-        </aside>
+      {/* Three-column layout — scrolls horizontally on narrow viewports */}
+      <div className="flex flex-1 overflow-x-auto overflow-y-hidden min-h-0">
+        <div className="flex flex-1 min-w-[900px] h-full">
+          {/* Left — intake form */}
+          <aside className="w-[380px] shrink-0 border-r border-border overflow-y-auto px-6 py-6 flex flex-col gap-0">
+            <div className="mb-5">
+              <h2 className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+                Manual intake
+              </h2>
+              <p className="text-xs text-muted-foreground mt-1 leading-relaxed">
+                Simulate a Kapso payload — fill in the fields Agent 1 would collect and submit to classify.
+              </p>
+            </div>
+            <TriageForm />
+          </aside>
 
-        {/* Right — reports feed + map */}
-        <Dashboard />
+          {/* Right — reports feed + map */}
+          <Dashboard />
+        </div>
       </div>
     </div>
   )

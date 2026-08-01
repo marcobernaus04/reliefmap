@@ -128,6 +128,15 @@ export function ReliefMap({ reports }: Props) {
     if (!containerRef.current) return
     let cancelled = false
 
+    // Inject Mapbox CSS if not already present (bypasses Turbopack CSS tree-shaking)
+    if (!document.getElementById('mapbox-gl-css')) {
+      const link = document.createElement('link')
+      link.id = 'mapbox-gl-css'
+      link.rel = 'stylesheet'
+      link.href = 'https://api.mapbox.com/mapbox-gl-js/v3.9.4/mapbox-gl.css'
+      document.head.appendChild(link)
+    }
+
     async function init() {
       try {
         const mb = await import('mapbox-gl')
