@@ -1,11 +1,11 @@
 import { TriageForm } from '@/components/triage-form'
-import { ReportsList } from '@/components/reports-list'
+import { Dashboard } from '@/components/dashboard'
 
 export default function Home() {
   return (
     <div className="min-h-screen bg-background font-sans flex flex-col">
       {/* Top bar */}
-      <header className="border-b border-border px-6 py-3 flex items-center justify-between">
+      <header className="border-b border-border px-6 py-3 flex items-center justify-between shrink-0">
         <div>
           <h1 className="text-base font-semibold tracking-tight">ReliefMap</h1>
           <p className="text-xs text-muted-foreground mt-0.5">
@@ -20,9 +20,9 @@ export default function Home() {
         </div>
       </header>
 
-      {/* Two-column layout */}
+      {/* Three-column layout */}
       <div className="flex flex-1 overflow-hidden">
-        {/* Left — intake form (manual / test) */}
+        {/* Left — intake form */}
         <aside className="w-[420px] shrink-0 border-r border-border overflow-y-auto px-6 py-6 flex flex-col gap-0">
           <div className="mb-5">
             <h2 className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
@@ -35,10 +35,8 @@ export default function Home() {
           <TriageForm />
         </aside>
 
-        {/* Right — live reports feed */}
-        <main className="flex-1 overflow-y-auto px-6 py-6">
-          <ReportsList />
-        </main>
+        {/* Right — reports feed + map */}
+        <Dashboard />
       </div>
     </div>
   )

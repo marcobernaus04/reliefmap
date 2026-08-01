@@ -3,7 +3,7 @@
 import { useState } from 'react'
 import type { EmergencyReport } from '@/lib/triage/schema'
 import { ReportCard } from './report-card'
-import { revalidateReports } from './reports-list'
+import { revalidateReports } from './dashboard'
 
 interface FormState {
   full_name: string
