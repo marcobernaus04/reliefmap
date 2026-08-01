@@ -1,4 +1,5 @@
 import { generateText, Output } from 'ai'
+import { createGoogleGenerativeAI } from '@ai-sdk/google'
 import {
   TriageOutputSchema,
   RISK_LEVEL_TO_COLOR,
@@ -8,7 +9,12 @@ import {
   type TriageOutput,
 } from './schema'
 
-const MODEL = 'anthropic/claude-sonnet-4-5'
+// Cheapest Gemini model available via Google AI Studio
+const google = createGoogleGenerativeAI({
+  apiKey: process.env.GOOGLE_GENERATIVE_AI_API_KEY,
+})
+const MODEL_ID = 'gemini-2.0-flash-lite'
+const MODEL = google(MODEL_ID)
 
 // ── System prompt ────────────────────────────────────────────────────────────
 
@@ -155,7 +161,7 @@ export async function classifyEmergency(payload: Agent1Payload): Promise<{
 
   if (!output) throw new Error('Model returned no structured output')
 
-  return { output, modelUsed: MODEL }
+  return { output, modelUsed: MODEL_ID }
 }
 
 // ── Escalation after merge ───────────────────────────────────────────────────
